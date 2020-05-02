@@ -1,0 +1,274 @@
+// main: ./style.scss;
+@import "_flex";
+@import "_variable";
+
+
+
+//中央寄せ
+@mixin wrap($margin, $width) {
+  margin: $margin;
+  width: $width;
+}
+//中央寄せ
+@mixin wrapauto( $width) {
+  margin-left: auto;
+  margin-right: auto;
+  width: $width;
+}
+
+//上下中央寄せ
+@mixin vhcenter() {
+  @include flexbox();
+  @include justify-content(center);
+  @include align-items(center);
+}
+
+//等分両端寄せ
+@mixin column_space-between() {
+  @include flexbox();
+  @include justify-content(space-between);
+}
+
+//等分均等寄せ
+@mixin column_space-around() {
+  @include flexbox();
+  @include justify-content(space-around);
+}
+
+//等分中央寄せ
+@mixin column_center() {
+  @include flexbox();
+  @include justify-content(center);
+}
+
+//項目の縦並び
+@mixin column-vertical() {
+  @include flex-wrap(wrap);
+  @include flex-direction(column);
+}
+
+//項目の横並び
+@mixin column($num,$interval) {
+  width: calc(100% / #{$num} - #{$interval}px);
+}
+
+//fontstyle
+@mixin fontstyle($size,$weight,$align) {
+  font-size: $size+px;
+  font-size: ($size/10)+rem;
+  font-weight:$weight;
+  text-align: $align;
+}
+
+//fontsize
+@mixin fontsize($size) {
+  font-size: $size+px;
+  font-size: ($size/10)+rem;
+}
+
+//text-stroke (text-shadowを使ったもの)
+@mixin text-stroke($size: 2, $bg: #000) {
+    text-shadow: #{$size}px 0 0 #{$bg}, -#{$size}px 0 0 #{$bg}, 0 -#{$size}px 0 #{$bg}, 0 #{$size}px 0 #{$bg}, #{$size}px #{$size}px 0 #{$bg}, -#{$size}px #{$size}px 0 #{$bg}, #{$size}px -#{$size}px 0 #{$bg}, -#{$size}px -#{$size}px 0 #{$bg}, #{$size - 1}px #{$size}px 0 #{$bg}, -#{$size - 1}px #{$size}px 0 #{$bg}, #{$size - 1}px -#{$size}px 0 #{$bg}, -#{$size - 1}px -#{$size}px 0 #{$bg}, #{$size}px #{$size - 1}px 0 #{$bg}, -#{$size}px #{$size - 1}px 0 #{$bg}, #{$size}px -#{$size - 1}px 0 #{$bg}, -#{$size}px -#{$size - 1}px 0 #{$bg}, #{$size - 1}px #{$size - 1}px 0 #{$bg}, -#{$size - 1}px #{$size - 1}px 0 #{$bg}, #{$size - 1}px -#{$size - 1}px 0 #{$bg}, -#{$size - 1}px -#{$size - 1}px 0 #{$bg};
+}
+
+
+
+//プレースホルダーの文字色設定
+@mixin placeholderColor($color) {
+    &:placeholder-shown {
+        color: $color;
+    }
+    &::-webkit-input-placeholder {
+        color:$color;
+    }
+    &:-moz-placeholder {
+        color:$color;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+        color:$color;
+        opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color:$color;
+    }
+}
+
+//inputやselectなどの各ブラウザ独自のデザインをリセット
+@mixin none-appearance {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none transparent;
+    background-clip: padding-box;
+    color: inherit;
+    font-size: inherit;
+    vertical-align: middle;
+    box-sizing: border-box;
+    &::-ms-clear {
+        display: none;
+    }
+    &::-ms-reveal {
+        display: none;
+    }
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+
+
+//テキストの頭揃え
+@mixin indent($kye) {
+  text-indent: -($kye)+em;
+  margin-left:($kye)+em;
+}
+
+//アニメーション
+@mixin animation( $aname, $adelay, $aduration) {
+  animation-name: $aname;
+  animation-delay: $adelay;
+  animation-duration: $aduration;
+  animation-fill-mode: both;
+  animation-timing-function: linear;
+  visibility: inherit;
+}
+
+
+/* ----------------------------------
+
+mixinでメディアクエリーを定義
+
+------------------------------------- */
+
+//1280px以上
+@mixin screen-fhd {
+  @media screen and (min-width: $hd-max) {
+    @content;
+  }
+}
+
+//1200px~1280px
+@mixin screen-hd {
+  @media screen and (min-width: $hd-min) and (max-width: $hd-max) {
+    @content;
+  }
+}
+
+//992px~1199px
+@mixin screen-desktop {
+  @media screen and (min-width: $desktop-min) and (max-width: $desktop-max) {
+    @content;
+  }
+}
+
+//768px~991px
+@mixin screen-laptop {
+  @media screen and (min-width: $laptop-min) and (max-width: $laptop-max) {
+    @content;
+  }
+}
+
+//576px~767px
+@mixin screen-tablet {
+  @media screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+
+//620px以下 かつ ランドスケープ
+@mixin screen-landscape {
+  @media (orientation: landscape) {
+      @content;
+  }
+}
+
+
+//// higher
+
+//1200px以上
+@mixin screen-higher-hd {
+  @media screen and (min-width: $hd-min) {
+    @content;
+  }
+}
+
+//992px以上
+@mixin screen-higher-desktop {
+  @media screen and (min-width: $desktop-min) {
+    @content;
+  }
+}
+
+//769px以上
+@mixin screen-higher-laptop {
+  @media screen and (min-width: $laptop-min) {
+    @content;
+  }
+}
+
+//576px以上
+@mixin screen-higher-tablet {
+  @media screen and (min-width: $tablet-min) {
+    @content;
+  }
+}
+
+
+
+
+//// less
+
+//1445px以下
+@mixin screen-less-fhd {
+  @media screen and (max-width: $fhd-max) {
+    @content;
+  }
+}
+
+//1280px以下
+@mixin screen-less-hd {
+  @media screen and (max-width: $hd-max) {
+    @content;
+  }
+}
+
+//1199px以下
+@mixin screen-less-desktop {
+  @media screen and (max-width: $desktop-max) {
+    @content;
+  }
+}
+
+//991px以下
+@mixin screen-less-laptop {
+  @media screen and (max-width: $laptop-max) {
+    @content;
+  }
+}
+
+//768px以下
+@mixin screen-less-tablet {
+  @media screen and (max-width: $tablet-max) {
+    @content;
+  }
+}
+
+//575px以下
+@mixin screen-mobile {
+  @media screen and (max-width: $mobile-max) {
+    @content;
+  }
+}
+
+//400px以下
+@mixin screen-legacymobile {
+  @media screen and (max-width: $legacymobile-max) {
+    @content;
+  }
+}

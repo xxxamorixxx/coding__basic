@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Description" content="" />
+    <meta name="keywords" content="">
+    <title></title>
+    <link rel="icon" href="/favicon.png" sizes="32x32">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/favicon.png">
+    <meta name="msapplication-TileImage" content="/favicon.png">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="/ogp.png">
+    <meta property="og:site_name" content="">
+    <meta property="og:description" content="" />
+    <!-- jQuery読み込み -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="library/js/script.js"></script>
+
+    <link href=”https://fonts.googleapis.com/earlyaccess/notosansjapanese.css” rel=”stylesheet” />
+    <link href="library/css/style.css" rel="stylesheet">
+
+<!-- matchHeight -->
+    <script src="library/js/jquery.matchHeight-min.js"></script>
+
+<!-- lightbox -->
+    <script src="library/js/lightbox.js"></script>
+    <link href="library/css/lightbox.css" rel="stylesheet">
+
+<!-- slick -->
+    <link rel="stylesheet" type="text/css" href="library/css/slick.css" charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="library/css/slick-theme.css" charset="UTF-8">
+    <script type="text/javascript" src="library/js/slick.js"></script>
+    <script>
+    $(document).ready(function() {
+      $('.favorite .inner-m').slick({
+        infinite: true,
+        speed: 300,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        arrows: true,
+        responsive: [{
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          }
+        }, {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          }
+        }]
+      });
+    });
+    </script>
+
+<!-- bgswitcher -->
+    <script src="library/js/bgswitcher.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.catch__img .wrap').bgSwitcher({
+          images: ['library/images/2x/index_eyecatch_a.jpg', 'library/images/2x/index_eyecatch_b.jpg', 'library/images/2x/index_eyecatch_c.jpg', 'library/images/2x/index_eyecatch_d.jpg', 'library/images/2x/index_eyecatch_e.jpg', 'library/images/2x/index_eyecatch_f.jpg'], // 切り替える背景画像を指定
+        });
+      });
+    </script>
+
+    <!-- WEBフォント -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- IE11でpicture要素を使用させるためのスクリプト -->
+    <script src="js/picturefill.min.js" ></script>
+</head>
+<body>
+
+  <picture>
+    <source media="(max-width: 480px)" srcset="./images/2x/top_sec01_tit01.png">
+    <source media="(max-width: 768px)" srcset="./images/2x/top_sec01_tit01.png">
+    <source media="(max-width: 992px)" srcset="./images/1x/top_sec01_tit01.png">
+    <source srcset="./images/1x/top_sec01_tit01.png"><!-- デフォルトの画像 -->
+    <img src="./images/1x/top_sec01_tit01.png" alt=""><!-- ブラウザ非対応時に表示する画像 -->
+  </picture>
+
+</body>
+</html>
